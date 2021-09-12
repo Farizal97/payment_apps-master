@@ -118,17 +118,52 @@ class _PaymentAppsState extends State<PaymentApps> {
       );
     }
 
+    Widget checkoutButton() {
+      return Column(
+        children: [
+          Container(
+            width: 261,
+            height: 50,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  backgroundColor: Color(0xff007DFF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(71),
+                  )),
+              onPressed: () {},
+              child: Text(
+                'Checkout Now',
+                style: buttonTextStyle,
+              ),
+            ),
+          )
+        ],
+      );
+    }
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xff04112F),
-        body: Column(
-          children: [
-            header(),
-            option(0, 'Monthly', 'Good for starting up', '\$20'),
-            option(1, 'Quarterly', 'Focusing on building', '\$55'),
-            option(2, 'Yearly', 'Steady company', '\$220'),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              header(),
+              SizedBox(
+                height: 50,
+              ),
+              option(0, 'Monthly', 'Good for starting up', '\$20'),
+              option(1, 'Quarterly', 'Focusing on building', '\$55'),
+              option(2, 'Yearly', 'Steady company', '\$220'),
+              SizedBox(
+                height: 50,
+              ),
+              selectedIndex == -1 ? SizedBox() : checkoutButton(),
+              SizedBox(
+                height: 50,
+              ),
+            ],
+          ),
         ),
       ),
     );
